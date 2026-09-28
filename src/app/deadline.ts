@@ -7,6 +7,8 @@ export class Deadline {
     private http = inject(HttpClient);
 
     getDeadline() {
-        return this.http.get<{ secondsLeft: number }>('/api/deadline');
+        return this.http.get<{ secondsLeft: number }>('/api/deadline').pipe(
+            map(res => Date.now() + res.secondsLeft * 1000)
+        );
     }
 }

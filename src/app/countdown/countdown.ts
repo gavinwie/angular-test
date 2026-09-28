@@ -8,18 +8,24 @@ import { Deadline } from '../deadline';
 })
 export class Countdown implements OnInit, OnDestroy {
   secondsLeft = signal(0);
+  private deadlineTimestamp: number | null = null;
   private timer: any;
 
   private deadlineService = inject(Deadline);
 
   ngOnInit() {
-    this.deadlineService.getDeadline().subscribe(res => {
-      this.secondsLeft.set(res.secondsLeft);
+    this.deadlineService.getDeadline().subscribe(ts => {
+      this.deadlineTimestamp = ts;
+      this.updateSecondsLeft();
 
       this.timer = setInterval(() => {
-        this.secondsLeft.set(this.secondsLeft() - 1);
+        this.updateSecondsLeft();
       }, 1000);
     });
+  }
+  private updateSecondsLeft() {
+    if (this.deadlineTimestamp == null) return;
+    this.secondsLeft.set(Math.max(0, Math.round((this.deadlineTimestamp - Date.now()) / 1000)));
   }
 
   ngOnDestroy() {
