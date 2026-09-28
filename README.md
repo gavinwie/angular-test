@@ -6,6 +6,8 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 This is a response to 6crickets Interview Phase 2, Angular Coding Problem.
 
+Given an endpoint with seconds remaining, create a countdown in Angular.
+
 ## Development server
 
 To start a local development server, run:
