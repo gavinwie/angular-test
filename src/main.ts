@@ -1,6 +1,16 @@
+import { Component, signal } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <h3>Deadline Countdown</h3>
+    
+  `
+})
+export class App {
+}
+
+bootstrapApplication(App);
