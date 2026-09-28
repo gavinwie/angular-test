@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { Countdown } from './app/countdown/countdown';
+import { appConfig } from './app/app.config';
 
 
 @Component({
@@ -16,4 +17,4 @@ import { Countdown } from './app/countdown/countdown';
 export class App {
 }
 
-bootstrapApplication(App);
+bootstrapApplication(App, appConfig);
